@@ -181,6 +181,14 @@ The way I do it is in two steps:
 
     masscan 10.0.0.0/8 -p3389 > ips.txt
     rdpscan --file ips.txt --workers 10000 >results.txt
+    
+    
+## Using with ZMap
+ZMap can also be used for scanning the IPv4 space. Like masscan, ZMap is a rather fast scanning tool. ZTee can be used to write the addresses to a file. 
+
+A simple way to run this is to pipe the ZMap output through ZTee before sending it to the `rdpscan` tool.
+    
+    zmap -p 3389 | ztee rdp.csv | rdpscan --file - > results.txt
 
 
 ## Building
